@@ -99,27 +99,27 @@ export function derive<T, U>(
   return derived;
 }
 
-function main() {
-  try {
-    const x = new Observable<number>(5);
-    const y = new Observable<number>(10);
+// function main() {
+//   try {
+//     const x = new Observable<number>(5);
+//     const y = new Observable<number>(10);
 
-    const sum = derive<number, number>([x, y], (a, b) => a + b);
+//     const sum = derive<number, number>([x, y], (a, b) => a + b);
 
-    const logId = sum.subscribe((value) => console.log(`Sum is now: ${value}`));
+//     const logId = sum.subscribe((value) => console.log(`Sum is now: ${value}`));
 
-    x.set(7); // This will trigger a recalculation and log
+//     x.set(7); // This will trigger a recalculation and log
 
-    // Cleanup when done
-    sum.unsubscribe(logId);
-    sum.cleanup();
-  } catch (error) {
-    if (error instanceof ObservableError) {
-      console.error("Observable system error:", error.message);
-    } else {
-      console.error("Unexpected error:", error);
-    }
-  }
-}
+//     // Cleanup when done
+//     sum.unsubscribe(logId);
+//     sum.cleanup();
+//   } catch (error) {
+//     if (error instanceof ObservableError) {
+//       console.error("Observable system error:", error.message);
+//     } else {
+//       console.error("Unexpected error:", error);
+//     }
+//   }
+// }
 
-main();
+// main();
